@@ -12,9 +12,6 @@ df = pd.read_csv('Big_Black_Money_Dataset.csv')
 
 # Preprocesamiento de datos
 def convert_to_datetime(date_str):
-    """
-    Intenta convertir una cadena a datetime, probando varios formatos.
-    """
     formats = ["%d/%m/%Y", "%Y-%m-%d %H:%M:%S", "%Y-%m-%d"]
     for fmt in formats:
         try:
@@ -31,6 +28,7 @@ df['Year'] = df['Transaction Date'].dt.year
 
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+server = app.server
 
 # Diseño del Dashboard
 app.layout = dbc.Container([
